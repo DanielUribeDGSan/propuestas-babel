@@ -119,6 +119,11 @@
         color: #34495e;
       }
 
+      /* TABLAS PARA DESKTOP */
+      .table-desktop {
+        display: block;
+      }
+
       table {
         width: 100%;
         border-collapse: collapse;
@@ -160,6 +165,115 @@
         background: linear-gradient(90deg, #27ae6020, transparent) !important;
         font-weight: 700;
         color: #27ae60;
+      }
+
+      /* CARDS PARA MÓVILES */
+      .cards-mobile {
+        display: none;
+      }
+
+      .cards-container {
+        display: grid;
+        gap: 16px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        border-left: 4px solid #f39433;
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        gap: 15px;
+      }
+
+      .card-title {
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 16px;
+        flex: 1;
+      }
+
+      .card-badge {
+        background: #f39433;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .card-badge.success {
+        background: #27ae60;
+      }
+
+      .card-badge.info {
+        background: #3498db;
+      }
+
+      .card-details {
+        display: grid;
+        gap: 12px;
+      }
+
+      .detail-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 8px 0;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .detail-row:last-child {
+        border-bottom: none;
+      }
+
+      .detail-label {
+        font-weight: 500;
+        color: #64748b;
+        font-size: 13px;
+        min-width: 80px;
+      }
+
+      .detail-value {
+        color: #2c3e50;
+        font-size: 14px;
+        text-align: right;
+        flex: 1;
+        margin-left: 15px;
+      }
+
+      .card.total-card {
+        background: linear-gradient(135deg, #27ae6015, #27ae6005);
+        border-left-color: #27ae60;
+      }
+
+      .card.total-card .card-title {
+        color: #27ae60;
+        font-weight: 700;
+      }
+
+      .highlight-text {
+        background: #f39433;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
       }
 
       .badge {
@@ -244,6 +358,16 @@
         font-size: 14px;
       }
 
+      .logo-container {
+        display: flex;
+        width: 100%;
+      }
+
+      .logo {
+        width: 50%;
+        object-fit: contain;
+      }
+
       @media print {
         body {
           background: white;
@@ -252,12 +376,103 @@
         .document {
           box-shadow: none;
         }
+        .cards-mobile {
+          display: none !important;
+        }
+        .table-desktop {
+          display: block !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .logo {
+          width: 70%;
+        }
+        body {
+          padding: 10px;
+        }
+
+        .header {
+          padding: 20px 15px;
+        }
+
+        .header h1 {
+          font-size: 22px;
+        }
+
+        .date-location {
+          position: relative;
+          right: 0;
+          top: 0;
+          margin-bottom: 15px;
+          text-align: center;
+        }
+
+        .content {
+          padding: 20px 15px;
+        }
+
+        .section {
+          margin-bottom: 25px;
+        }
+
+        .section h2 {
+          font-size: 20px;
+        }
+
+        .section h3 {
+          font-size: 16px;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+          gap: 10px;
+          padding: 15px;
+        }
+
+        .comparison {
+          grid-template-columns: 1fr;
+        }
+
+        /* Mostrar cards y ocultar tablas en móvil */
+        .table-desktop {
+          display: none;
+        }
+
+        .cards-mobile {
+          display: block;
+        }
+
+        .card {
+          padding: 16px;
+        }
+
+        .card-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .detail-row {
+          flex-direction: column;
+          gap: 5px;
+          align-items: flex-start;
+        }
+
+        .detail-value {
+          text-align: left;
+          margin-left: 0;
+          font-weight: 500;
+        }
       }
     </style>
   </head>
   <body>
     <div class="document">
       <div class="header">
+        <div class="logo-container">
+          <img class="logo" src="./img/logotipo-babel.svg" alt="babel group" />
+        </div>
         <div class="date-location">
           <div><strong>05/08/2025</strong></div>
           <div>Ciudad de México</div>
@@ -292,47 +507,164 @@
 
         <div class="section">
           <h2>Stack Tecnológico Propuesto</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Componente</th>
-                <th>Tecnología</th>
-                <th>Versión/Detalle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Frontend</strong></td>
-                <td>React + Next.js</td>
-                <td>React 18 + Next.js 14 (SSR/SSG)</td>
-              </tr>
-              <tr>
-                <td><strong>Backend</strong></td>
-                <td>Node.js + Express</td>
-                <td>Node.js LTS + Express/Fastify</td>
-              </tr>
-              <tr>
-                <td><strong>Base de Datos</strong></td>
-                <td>Microsoft SQL Server</td>
-                <td>SQL Server 2019+</td>
-              </tr>
-              <tr>
-                <td><strong>CMS</strong></td>
-                <td>Desarrollo personalizado</td>
-                <td>Panel administrativo custom</td>
-              </tr>
-              <tr>
-                <td><strong>Hosting</strong></td>
-                <td>Amazon Web Services</td>
-                <td>EC2 + RDS + CloudFront + S3</td>
-              </tr>
-              <tr>
-                <td><strong>Analítica</strong></td>
-                <td>Multiple integrations</td>
-                <td>GA4, GTM, Meta Pixel, TikTok Pixel</td>
-              </tr>
-            </tbody>
-          </table>
+
+          <!-- Tabla para Desktop -->
+          <div class="table-desktop">
+            <table>
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Tecnología</th>
+                  <th>Versión/Detalle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Frontend</strong></td>
+                  <td>React + Next.js</td>
+                  <td>React 18 + Next.js 14 (SSR/SSG)</td>
+                </tr>
+                <tr>
+                  <td><strong>Backend</strong></td>
+                  <td>Node.js + Express</td>
+                  <td>Node.js LTS + Express/Fastify</td>
+                </tr>
+                <tr>
+                  <td><strong>Base de Datos</strong></td>
+                  <td>Microsoft SQL Server</td>
+                  <td>SQL Server 2019+</td>
+                </tr>
+                <tr>
+                  <td><strong>CMS</strong></td>
+                  <td>Desarrollo personalizado</td>
+                  <td>Panel administrativo custom</td>
+                </tr>
+                <tr>
+                  <td><strong>Hosting</strong></td>
+                  <td>Amazon Web Services</td>
+                  <td>EC2 + RDS + CloudFront + S3</td>
+                </tr>
+                <tr>
+                  <td><strong>Analítica</strong></td>
+                  <td>Multiple integrations</td>
+                  <td>GA4, GTM, Meta Pixel, TikTok Pixel</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Cards para Mobile -->
+          <div class="cards-mobile">
+            <div class="cards-container">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Frontend</div>
+                  <div class="card-badge">React</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Tecnología:</div>
+                    <div class="detail-value">React + Next.js</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Versión:</div>
+                    <div class="detail-value">
+                      React 18 + Next.js 14 (SSR/SSG)
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Backend</div>
+                  <div class="card-badge">Node.js</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Tecnología:</div>
+                    <div class="detail-value">Node.js + Express</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Versión:</div>
+                    <div class="detail-value">
+                      Node.js LTS + Express/Fastify
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Base de Datos</div>
+                  <div class="card-badge">SQL</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Tecnología:</div>
+                    <div class="detail-value">Microsoft SQL Server</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Versión:</div>
+                    <div class="detail-value">SQL Server 2019+</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">CMS</div>
+                  <div class="card-badge">Custom</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Tecnología:</div>
+                    <div class="detail-value">Desarrollo personalizado</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Detalle:</div>
+                    <div class="detail-value">Panel administrativo custom</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Hosting</div>
+                  <div class="card-badge">AWS</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Tecnología:</div>
+                    <div class="detail-value">Amazon Web Services</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Servicios:</div>
+                    <div class="detail-value">EC2 + RDS + CloudFront + S3</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Analítica</div>
+                  <div class="card-badge">Multi</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Tecnología:</div>
+                    <div class="detail-value">Multiple integrations</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Incluye:</div>
+                    <div class="detail-value">
+                      GA4, GTM, Meta Pixel, TikTok Pixel
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="section">
@@ -341,164 +673,617 @@
           <h3>
             Escenario Competitivo <span class="badge info">9.2 semanas</span>
           </h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Fase</th>
-                <th>Actividades Principales</th>
-                <th>Horas</th>
-                <th>Días</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Análisis y Arquitectura</td>
-                <td>Levantamiento técnico, arquitectura de información</td>
-                <td>24h</td>
-                <td>3 días</td>
-              </tr>
-              <tr>
-                <td>Diseño UI/UX</td>
-                <td>Wireframes, diseño responsive, prototipo</td>
-                <td>40h</td>
-                <td>5 días</td>
-              </tr>
-              <tr>
-                <td>Setup y Configuración</td>
-                <td>Setup del proyecto, entornos, CI/CD</td>
-                <td>16h</td>
-                <td>2 días</td>
-              </tr>
-              <tr>
-                <td>Desarrollo Frontend</td>
-                <td>Componentes React, páginas, responsive</td>
-                <td>120h</td>
-                <td>15 días</td>
-              </tr>
-              <tr>
-                <td>Desarrollo Backend</td>
-                <td>APIs, integración MSSQL, CMS admin</td>
-                <td>80h</td>
-                <td>10 días</td>
-              </tr>
-              <tr>
-                <td>Integraciones</td>
-                <td>Analítica, SEO técnico, optimizaciones</td>
-                <td>32h</td>
-                <td>4 días</td>
-              </tr>
-              <tr>
-                <td>Testing y QA</td>
-                <td>Pruebas funcionales, performance</td>
-                <td>24h</td>
-                <td>3 días</td>
-              </tr>
-              <tr>
-                <td>Deployment</td>
-                <td>Configuración AWS, DNS, SSL</td>
-                <td>16h</td>
-                <td>2 días</td>
-              </tr>
-              <tr>
-                <td>Documentación</td>
-                <td>Manual CMS, documentación técnica</td>
-                <td>16h</td>
-                <td>2 días</td>
-              </tr>
-              <tr class="total-row">
-                <td><strong>TOTAL COMPETITIVO</strong></td>
-                <td>
-                  <strong>Recursos: 1 Desarrollador Full-Stack Senior</strong>
-                </td>
-                <td><strong>368h</strong></td>
-                <td><strong>46 días</strong></td>
-              </tr>
-            </tbody>
-          </table>
+
+          <!-- Tabla para Desktop -->
+          <div class="table-desktop">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fase</th>
+                  <th>Actividades Principales</th>
+                  <th>Horas</th>
+                  <th>Días</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Análisis y Arquitectura</td>
+                  <td>Levantamiento técnico, arquitectura de información</td>
+                  <td>24h</td>
+                  <td>3 días</td>
+                </tr>
+                <tr>
+                  <td>Diseño UI/UX</td>
+                  <td>Wireframes, diseño responsive, prototipo</td>
+                  <td>40h</td>
+                  <td>5 días</td>
+                </tr>
+                <tr>
+                  <td>Setup y Configuración</td>
+                  <td>Setup del proyecto, entornos, CI/CD</td>
+                  <td>16h</td>
+                  <td>2 días</td>
+                </tr>
+                <tr>
+                  <td>Desarrollo Frontend</td>
+                  <td>Componentes React, páginas, responsive</td>
+                  <td>120h</td>
+                  <td>15 días</td>
+                </tr>
+                <tr>
+                  <td>Desarrollo Backend</td>
+                  <td>APIs, integración MSSQL, CMS admin</td>
+                  <td>80h</td>
+                  <td>10 días</td>
+                </tr>
+                <tr>
+                  <td>Integraciones</td>
+                  <td>Analítica, SEO técnico, optimizaciones</td>
+                  <td>32h</td>
+                  <td>4 días</td>
+                </tr>
+                <tr>
+                  <td>Testing y QA</td>
+                  <td>Pruebas funcionales, performance</td>
+                  <td>24h</td>
+                  <td>3 días</td>
+                </tr>
+                <tr>
+                  <td>Deployment</td>
+                  <td>Configuración AWS, DNS, SSL</td>
+                  <td>16h</td>
+                  <td>2 días</td>
+                </tr>
+                <tr>
+                  <td>Documentación</td>
+                  <td>Manual CMS, documentación técnica</td>
+                  <td>16h</td>
+                  <td>2 días</td>
+                </tr>
+                <tr class="total-row">
+                  <td><strong>TOTAL COMPETITIVO</strong></td>
+                  <td>
+                    <strong>Recursos: 1 Desarrollador Full-Stack Senior</strong>
+                  </td>
+                  <td><strong>368h</strong></td>
+                  <td><strong>46 días</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Cards para Mobile -->
+          <div class="cards-mobile">
+            <div class="cards-container">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Análisis y Arquitectura</div>
+                  <div class="card-badge">3 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Levantamiento técnico, arquitectura de información
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">24h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Diseño UI/UX</div>
+                  <div class="card-badge">5 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Wireframes, diseño responsive, prototipo
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">40h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Setup y Configuración</div>
+                  <div class="card-badge">2 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Setup del proyecto, entornos, CI/CD
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">16h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Desarrollo Frontend</div>
+                  <div class="card-badge">15 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Componentes React, páginas, responsive
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">120h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Desarrollo Backend</div>
+                  <div class="card-badge">10 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      APIs, integración MSSQL, CMS admin
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">80h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Integraciones</div>
+                  <div class="card-badge">4 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Analítica, SEO técnico, optimizaciones
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">32h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Testing y QA</div>
+                  <div class="card-badge">3 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Pruebas funcionales, performance
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">24h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Deployment</div>
+                  <div class="card-badge">2 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">Configuración AWS, DNS, SSL</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">16h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Documentación</div>
+                  <div class="card-badge">2 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Manual CMS, documentación técnica
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">16h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card total-card">
+                <div class="card-header">
+                  <div class="card-title">TOTAL COMPETITIVO</div>
+                  <div class="card-badge success">46 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Recursos:</div>
+                    <div class="detail-value">
+                      <strong>1 Desarrollador Full-Stack Senior</strong>
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Total Horas:</div>
+                    <div class="detail-value"><strong>368h</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <h3>
             Escenario Amplio <span class="badge success">14.6 semanas</span>
           </h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Fase</th>
-                <th>Actividades Principales</th>
-                <th>Horas</th>
-                <th>Días</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Análisis y Arquitectura</td>
-                <td>Análisis detallado, múltiples iteraciones</td>
-                <td>40h</td>
-                <td>5 días</td>
-              </tr>
-              <tr>
-                <td>Diseño UI/UX</td>
-                <td>Diseño iterativo, múltiples propuestas, testing</td>
-                <td>64h</td>
-                <td>8 días</td>
-              </tr>
-              <tr>
-                <td>Setup y Configuración</td>
-                <td>Setup robusto, configuraciones avanzadas</td>
-                <td>24h</td>
-                <td>3 días</td>
-              </tr>
-              <tr>
-                <td>Desarrollo Frontend</td>
-                <td>Desarrollo detallado, microinteracciones</td>
-                <td>160h</td>
-                <td>20 días</td>
-              </tr>
-              <tr>
-                <td>Desarrollo Backend</td>
-                <td>Backend robusto, CMS avanzado, seguridad</td>
-                <td>120h</td>
-                <td>15 días</td>
-              </tr>
-              <tr>
-                <td>Integraciones</td>
-                <td>Integraciones completas, optimizaciones avanzadas</td>
-                <td>48h</td>
-                <td>6 días</td>
-              </tr>
-              <tr>
-                <td>Testing y QA</td>
-                <td>Testing exhaustivo, múltiples dispositivos</td>
-                <td>40h</td>
-                <td>5 días</td>
-              </tr>
-              <tr>
-                <td>Deployment</td>
-                <td>Deployment con monitoreo, configuraciones avanzadas</td>
-                <td>24h</td>
-                <td>3 días</td>
-              </tr>
-              <tr>
-                <td>Documentación</td>
-                <td>Documentación completa, capacitación</td>
-                <td>24h</td>
-                <td>3 días</td>
-              </tr>
-              <tr>
-                <td>Buffer/Contingencia</td>
-                <td>Tiempo para ajustes e imprevistos</td>
-                <td>40h</td>
-                <td>5 días</td>
-              </tr>
-              <tr class="total-row">
-                <td><strong>TOTAL AMPLIO</strong></td>
-                <td>
-                  <strong>Recursos: 2 Desarrolladores Especializados</strong>
-                </td>
-                <td><strong>584h</strong></td>
-                <td><strong>73 días</strong></td>
-              </tr>
-            </tbody>
-          </table>
+
+          <!-- Tabla para Desktop -->
+          <div class="table-desktop">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fase</th>
+                  <th>Actividades Principales</th>
+                  <th>Horas</th>
+                  <th>Días</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Análisis y Arquitectura</td>
+                  <td>Análisis detallado, múltiples iteraciones</td>
+                  <td>40h</td>
+                  <td>5 días</td>
+                </tr>
+                <tr>
+                  <td>Diseño UI/UX</td>
+                  <td>Diseño iterativo, múltiples propuestas, testing</td>
+                  <td>64h</td>
+                  <td>8 días</td>
+                </tr>
+                <tr>
+                  <td>Setup y Configuración</td>
+                  <td>Setup robusto, configuraciones avanzadas</td>
+                  <td>24h</td>
+                  <td>3 días</td>
+                </tr>
+                <tr>
+                  <td>Desarrollo Frontend</td>
+                  <td>Desarrollo detallado, microinteracciones</td>
+                  <td>160h</td>
+                  <td>20 días</td>
+                </tr>
+                <tr>
+                  <td>Desarrollo Backend</td>
+                  <td>Backend robusto, CMS avanzado, seguridad</td>
+                  <td>120h</td>
+                  <td>15 días</td>
+                </tr>
+                <tr>
+                  <td>Integraciones</td>
+                  <td>Integraciones completas, optimizaciones avanzadas</td>
+                  <td>48h</td>
+                  <td>6 días</td>
+                </tr>
+                <tr>
+                  <td>Testing y QA</td>
+                  <td>Testing exhaustivo, múltiples dispositivos</td>
+                  <td>40h</td>
+                  <td>5 días</td>
+                </tr>
+                <tr>
+                  <td>Deployment</td>
+                  <td>Deployment con monitoreo, configuraciones avanzadas</td>
+                  <td>24h</td>
+                  <td>3 días</td>
+                </tr>
+                <tr>
+                  <td>Documentación</td>
+                  <td>Documentación completa, capacitación</td>
+                  <td>24h</td>
+                  <td>3 días</td>
+                </tr>
+                <tr>
+                  <td>Buffer/Contingencia</td>
+                  <td>Tiempo para ajustes e imprevistos</td>
+                  <td>40h</td>
+                  <td>5 días</td>
+                </tr>
+                <tr class="total-row">
+                  <td><strong>TOTAL AMPLIO</strong></td>
+                  <td>
+                    <strong>Recursos: 2 Desarrolladores Especializados</strong>
+                  </td>
+                  <td><strong>584h</strong></td>
+                  <td><strong>73 días</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Cards para Mobile -->
+          <div class="cards-mobile">
+            <div class="cards-container">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Análisis y Arquitectura</div>
+                  <div class="card-badge">5 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Análisis detallado, múltiples iteraciones
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">40h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Diseño UI/UX</div>
+                  <div class="card-badge">8 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Diseño iterativo, múltiples propuestas, testing
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">64h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Setup y Configuración</div>
+                  <div class="card-badge">3 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Setup robusto, configuraciones avanzadas
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">24h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Desarrollo Frontend</div>
+                  <div class="card-badge">20 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Desarrollo detallado, microinteracciones
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">160h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Desarrollo Backend</div>
+                  <div class="card-badge">15 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Backend robusto, CMS avanzado, seguridad
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">120h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Integraciones</div>
+                  <div class="card-badge">6 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Integraciones completas, optimizaciones avanzadas
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">48h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Testing y QA</div>
+                  <div class="card-badge">5 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Testing exhaustivo, múltiples dispositivos
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">40h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Deployment</div>
+                  <div class="card-badge">3 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Deployment con monitoreo, configuraciones avanzadas
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">24h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Documentación</div>
+                  <div class="card-badge">3 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Documentación completa, capacitación
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">24h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Buffer/Contingencia</div>
+                  <div class="card-badge">5 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Actividades:</div>
+                    <div class="detail-value">
+                      Tiempo para ajustes e imprevistos
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Horas:</div>
+                    <div class="detail-value">
+                      <span class="highlight-text">40h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card total-card">
+                <div class="card-header">
+                  <div class="card-title">TOTAL AMPLIO</div>
+                  <div class="card-badge success">73 días</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Recursos:</div>
+                    <div class="detail-value">
+                      <strong>2 Desarrolladores Especializados</strong>
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Total Horas:</div>
+                    <div class="detail-value"><strong>584h</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="section">
@@ -549,57 +1334,186 @@
 
         <div class="section">
           <h2>Módulos del CMS</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Módulo</th>
-                <th>Funcionalidades</th>
-                <th>Horas Estimadas</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Gestión de Contenido</td>
-                <td>Páginas principales, banners, contenido dinámico</td>
-                <td>40h</td>
-              </tr>
-              <tr>
-                <td>Tarjetas y Beneficios</td>
-                <td>CRUD tarjetas, promociones, requisitos</td>
-                <td>32h</td>
-              </tr>
-              <tr>
-                <td>Ubicaciones</td>
-                <td>Gestión tiendas físicas, filtros por estado</td>
-                <td>24h</td>
-              </tr>
-              <tr>
-                <td>FAQs Dinámicas</td>
-                <td>Preguntas por categorías, orden personalizable</td>
-                <td>16h</td>
-              </tr>
-              <tr>
-                <td>Blog/Educación</td>
-                <td>Artículos, categorización, SEO</td>
-                <td>24h</td>
-              </tr>
-              <tr>
-                <td>Generador Landings</td>
-                <td>Creación dinámica, formularios, layouts</td>
-                <td>32h</td>
-              </tr>
-              <tr>
-                <td>SEO y Metadatos</td>
-                <td>Meta tags, Open Graph, sitemap</td>
-                <td>16h</td>
-              </tr>
-              <tr>
-                <td>Usuarios y Permisos</td>
-                <td>Sistema de roles, accesos diferenciados</td>
-                <td>16h</td>
-              </tr>
-            </tbody>
-          </table>
+
+          <!-- Tabla para Desktop -->
+          <div class="table-desktop">
+            <table>
+              <thead>
+                <tr>
+                  <th>Módulo</th>
+                  <th>Funcionalidades</th>
+                  <th>Horas Estimadas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Gestión de Contenido</td>
+                  <td>Páginas principales, banners, contenido dinámico</td>
+                  <td>40h</td>
+                </tr>
+                <tr>
+                  <td>Tarjetas y Beneficios</td>
+                  <td>CRUD tarjetas, promociones, requisitos</td>
+                  <td>32h</td>
+                </tr>
+                <tr>
+                  <td>Ubicaciones</td>
+                  <td>Gestión tiendas físicas, filtros por estado</td>
+                  <td>24h</td>
+                </tr>
+                <tr>
+                  <td>FAQs Dinámicas</td>
+                  <td>Preguntas por categorías, orden personalizable</td>
+                  <td>16h</td>
+                </tr>
+                <tr>
+                  <td>Blog/Educación</td>
+                  <td>Artículos, categorización, SEO</td>
+                  <td>24h</td>
+                </tr>
+                <tr>
+                  <td>Generador Landings</td>
+                  <td>Creación dinámica, formularios, layouts</td>
+                  <td>32h</td>
+                </tr>
+                <tr>
+                  <td>SEO y Metadatos</td>
+                  <td>Meta tags, Open Graph, sitemap</td>
+                  <td>16h</td>
+                </tr>
+                <tr>
+                  <td>Usuarios y Permisos</td>
+                  <td>Sistema de roles, accesos diferenciados</td>
+                  <td>16h</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Cards para Mobile -->
+          <div class="cards-mobile">
+            <div class="cards-container">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Gestión de Contenido</div>
+                  <div class="card-badge">40h</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Incluye:</div>
+                    <div class="detail-value">
+                      Páginas principales, banners, contenido dinámico
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Tarjetas y Beneficios</div>
+                  <div class="card-badge">32h</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Incluye:</div>
+                    <div class="detail-value">
+                      CRUD tarjetas, promociones, requisitos
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Ubicaciones</div>
+                  <div class="card-badge">24h</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Incluye:</div>
+                    <div class="detail-value">
+                      Gestión tiendas físicas, filtros por estado
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">FAQs Dinámicas</div>
+                  <div class="card-badge">16h</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Incluye:</div>
+                    <div class="detail-value">
+                      Preguntas por categorías, orden personalizable
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Blog/Educación</div>
+                  <div class="card-badge">24h</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Incluye:</div>
+                    <div class="detail-value">
+                      Artículos, categorización, SEO
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Generador Landings</div>
+                  <div class="card-badge">32h</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Incluye:</div>
+                    <div class="detail-value">
+                      Creación dinámica, formularios, layouts
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">SEO y Metadatos</div>
+                  <div class="card-badge">16h</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Incluye:</div>
+                    <div class="detail-value">
+                      Meta tags, Open Graph, sitemap
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Usuarios y Permisos</div>
+                  <div class="card-badge">16h</div>
+                </div>
+                <div class="card-details">
+                  <div class="detail-row">
+                    <div class="detail-label">Incluye:</div>
+                    <div class="detail-value">
+                      Sistema de roles, accesos diferenciados
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="section">
